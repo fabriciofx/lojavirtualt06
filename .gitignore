@@ -1,0 +1,16 @@
+allure-results/
+target/
+.vscode/
+.idea/
+.mvn/
+.DS_Store
+*.iml
+.project
+.settings
+.classpath
+.recommenders
+sonar-project.properties
+*.class
+*.log
+session*.md
+dependency-reduced-pom.xml
