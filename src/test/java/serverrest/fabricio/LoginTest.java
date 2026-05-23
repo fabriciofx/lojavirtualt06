@@ -1,42 +1,32 @@
-package serverrest;
+package serverrest.fabricio;
 
 import com.github.javafaker.Faker;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import java.util.Random;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import serverrest.dto.Credenciais;
-import serverrest.dto.Produto;
-import serverrest.dto.Usuario;
-import serverrest.response.CadastraProdutoResponse;
-import serverrest.response.CadastraUsuarioResponse;
-import serverrest.response.LoginResponse;
-import serverrest.response.RemoveUsuarioResponse;
+import serverrest.fabricio.dto.Credenciais;
+import serverrest.fabricio.dto.Usuario;
+import serverrest.fabricio.response.CadastraUsuarioResponse;
+import serverrest.fabricio.response.LoginResponse;
+import serverrest.fabricio.response.RemoveUsuarioResponse;
 
-public class ProdutoTest {
+public class LoginTest {
     @BeforeAll
     public static void setupTest(){
         RestAssured.baseURI = "https://serverest.dev";
     }
 
     @Test
-    public void deveCadastrarProduto() {
-        final Random random = new Random();
+    public void deveLogarNoSistema() {
         final Faker faker = new Faker();
         final Usuario usuario = new Usuario(
             faker.name().fullName(),
             faker.internet().emailAddress(),
             faker.internet().password(),
             "true"
-        );
-        final Produto produto = new Produto(
-            faker.commerce().productName(),
-            faker.commerce().productName(),
-            random.nextInt(100, 10000),
-            random.nextInt(1, 100)
         );
         final CadastraUsuarioResponse criado = RestAssured
             .given()
@@ -71,22 +61,6 @@ public class ProdutoTest {
         Assertions.assertEquals(
             "Login realizado com sucesso",
             login.getMessage()
-        );
-        final CadastraProdutoResponse cadastrado = RestAssured
-            .given()
-            .header("Authorization", login.getAuthorization())
-            .contentType(ContentType.JSON)
-            .body(produto)
-            .log().all()
-            .post("/produtos")
-            .then()
-            .log().all()
-            .statusCode(HttpStatus.SC_CREATED)
-            .extract()
-            .as(CadastraProdutoResponse.class);
-        Assertions.assertEquals(
-            "Cadastro realizado com sucesso",
-            cadastrado.getMessage()
         );
         final RemoveUsuarioResponse removido = RestAssured
             .given()

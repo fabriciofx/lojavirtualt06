@@ -1,4 +1,4 @@
-package serverrest.dto;
+package serverrest.fabricio.dto;
 
 public class Credenciais {
     private String email;

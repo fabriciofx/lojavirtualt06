@@ -1,4 +1,4 @@
-package serverrest;
+package serverrest.fabricio;
 
 import com.github.javafaker.Faker;
 import io.restassured.RestAssured;
@@ -7,10 +7,10 @@ import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import serverrest.dto.Usuario;
-import serverrest.response.BuscaUsuarioResponse;
-import serverrest.response.CadastraUsuarioResponse;
-import serverrest.response.RemoveUsuarioResponse;
+import serverrest.fabricio.dto.Usuario;
+import serverrest.fabricio.response.BuscaUsuarioResponse;
+import serverrest.fabricio.response.CadastraUsuarioResponse;
+import serverrest.fabricio.response.RemoveUsuarioResponse;
 
 public class UsuarioTest {
     @BeforeAll

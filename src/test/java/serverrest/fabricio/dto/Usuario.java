@@ -1,4 +1,4 @@
-package serverrest.dto;
+package serverrest.fabricio.dto;
 
 public class Usuario {
     private String nome;

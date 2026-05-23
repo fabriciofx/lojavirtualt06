@@ -1,4 +1,4 @@
-package serverrest.response;
+package serverrest.fabricio.response;
 
 public class CadastraUsuarioResponse {
     private String message;
