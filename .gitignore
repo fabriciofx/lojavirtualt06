@@ -1,5 +1,6 @@
 allure-results/
 target/
+.allure/
 .vscode/
 .idea/
 .mvn/
