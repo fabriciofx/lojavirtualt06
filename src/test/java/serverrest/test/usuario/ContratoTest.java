@@ -1,5 +1,6 @@
 package serverrest.test.usuario;
 
+import io.qameta.allure.Description;
 import io.restassured.http.ContentType;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,7 @@ import static io.restassured.RestAssured.given;
 public class ContratoTest extends BaseTest {
 
     @Test
+    @Description("Teste de contrato para cadastrar usuário")
     public void deveValidarContratoDeUsuarios() {
         given()
                 .contentType(ContentType.JSON)

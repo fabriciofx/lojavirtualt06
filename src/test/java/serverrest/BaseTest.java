@@ -12,16 +12,14 @@ import io.restassured.specification.RequestSpecification;
 import static io.restassured.RestAssured.given;
 
 public class BaseTest {
-        public static String TOKEN;
-        public static String MSG_CADASTRO_USER_OK = "Cadastro realizado com sucesso";
-        public static String MSG_EMAIL_DUPLICADO = "Este email já está sendo usado";
-        public static String MSG_LOGIN_OK = "Login realizado com sucesso";
-        public static String MSG_LOGIN_NOK = "Email e/ou senha inválidos";
+    public static String TOKEN;
+    public static String MSG_CADASTRO_USER_OK = "Cadastro realizado com sucesso";
+    public static String MSG_EMAIL_DUPLICADO = "Este email já está sendo usado";
+    public static String MSG_LOGIN_OK = "Login realizado com sucesso";
+    public static String MSG_LOGIN_NOK = "Email e/ou senha inválidos";
 
-
-
-        @BeforeAll
-        public static void setup() {
+    @BeforeAll
+    public static void setup() {
             RestAssured.baseURI = "https://serverest.dev/";
         }
 
