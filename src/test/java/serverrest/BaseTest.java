@@ -7,6 +7,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
+import io.restassured.specification.RequestSpecification;
 
 import static io.restassured.RestAssured.given;
 
@@ -24,16 +25,26 @@ public class BaseTest {
             RestAssured.baseURI = "https://serverest.dev/";
         }
 
+    public static RequestSpecification baseRequest() {
+        return given().contentType(ContentType.JSON);
+    }
 
-
-    public static ValidatableResponse doGet(String path, int statusCode){
-        return given()
-                .contentType(ContentType.JSON)
+    public static ValidatableResponse doGet(String path, int statusCode) {
+        return baseRequest()
                 .when()
                 .get(path)
                 .then()
                 .statusCode(statusCode);
-        }
+    }
+
+    public static ValidatableResponse doGet(String path, int statusCode, String token) {
+        return baseRequest()
+                .headers("Authorization", token)
+                .when()
+                .get(path)
+                .then()
+                .statusCode(statusCode);
+    }
     public static ValidatableResponse doPost(Object body, String path, int statusCode){
         return given()
                 .contentType(ContentType.JSON)

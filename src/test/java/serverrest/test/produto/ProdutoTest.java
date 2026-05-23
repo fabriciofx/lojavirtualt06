@@ -4,6 +4,7 @@ import dto.LoginDTO;
 import dto.ProdutoDTO;
 import dto.UsuarioReqDTO;
 import io.restassured.http.ContentType;
+import org.apache.http.Header;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ public class ProdutoTest extends BaseTest {
     }
     @Test
     public void deveListarProdutos() {
-        doGet("/produtos",HttpStatus.SC_OK).body("produtos", not(empty()));
+        doGet("/produtos",HttpStatus.SC_OK, TOKEN).body("produtos", not(empty()));
     }
 
     @Test
